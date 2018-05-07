@@ -38,7 +38,7 @@ class Hours extends React.Component {
         <table>
           <tbody>
             { ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'].map((dayOfWeek) => {
-              const open = moment(`${this.props.hours[dayOfWeek].split('-')[0]}'`, 'HH:mm Z').tz(this.state.timezone.timeZoneId);
+              const open = moment(`${this.props.hours[dayOfWeek].split('-')[0]}`, 'HH:mm Z').tz(this.state.timezone.timeZoneId);
               const close = (this.props.hours[dayOfWeek].split('-')[1].split(':')[0] <= 12) ?
                 moment(`${this.props.hours[dayOfWeek].split('-')[1]}`, 'HH:mm Z').add(1, 'days').tz(this.state.timezone.timeZoneId) :
                 moment(`${this.props.hours[dayOfWeek].split('-')[1]}`, 'HH:mm Z').tz(this.state.timezone.timeZoneId);
