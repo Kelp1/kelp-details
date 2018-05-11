@@ -17,7 +17,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurantId: queryString.parse(window.location.search).id,
+      restaurantId: '32',
       restaurantInfo: '',
       restaurantHoursToday: '',
       restaurantMenu: '',
@@ -27,7 +27,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // axios.get(`http://${AWS_PUBLIC_IP}/api/details/${this.state.restaurantId}`)
-    axios.get(`http://localhost:3002/api/details/${this.state.restaurantId}`)
+    axios.get(`http://localhost:3002/api/details/${queryString.parse(window.location.search).id}`)
       .then((response) => {
         this.setState({ restaurantInfo: response.data });
       })
@@ -35,7 +35,7 @@ class App extends React.Component {
         Raven.captureException(error);
       });
     // axios.get(`http://${AWS_PUBLIC_IP}/api/menu/${this.state.restaurantId}`)
-    axios.get(`http://localhost:3002/api/menu/${this.state.restaurantId}`)
+    axios.get(`http://localhost:3002/api/menu/${queryString.parse(window.location.search).id}`)
       .then((response) => {
         this.setState({ restaurantMenu: response.data });
       })
