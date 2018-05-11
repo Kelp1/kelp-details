@@ -126,3 +126,6 @@ exec(insertMenus, (err) => {
   }
   console.log('insert menus1 complete');
 });
+
+fs.unlinkSync('restaurants1.json');
+fs.unlinkSync('menus1.json');

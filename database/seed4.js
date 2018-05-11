@@ -110,7 +110,7 @@ function seeder() {
 
 seeder();
 
-const insertRestaurants = 'mongoimport --db welp --collection restaurants --file restaurants4.json --numInsertionWorkers 2';
+const insertRestaurants = 'mongoimport --host 172.17.0.2 --db welp --collection restaurants --file restaurants4.json --numInsertionWorkers 2';
 exec(insertRestaurants, (err) => {
   if (err) {
     console.log(err);
@@ -118,10 +118,13 @@ exec(insertRestaurants, (err) => {
   console.log('insert restaurants4 complete');
 });
 
-const insertMenus = 'mongoimport --db welp --collection menus --file menus4.json --numInsertionWorkers 2';
+const insertMenus = 'mongoimport --host 172.17.0.2 --db welp --collection menus --file menus4.json --numInsertionWorkers 2';
 exec(insertMenus, (err) => {
   if (err) {
     console.log(err);
   }
   console.log('insert menus4 complete');
 });
+
+fs.unlinkSync('restaurants4.json');
+fs.unlinkSync('menus4.json');

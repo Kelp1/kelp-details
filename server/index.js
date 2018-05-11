@@ -1,13 +1,13 @@
 require('newrelic');
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const Restaurants = require('../database/Restaurants');
-const Menus = require('../database/Menus');
 const bluebird = require('bluebird');
-const redis = require('redis');
 const cluster = require('cluster');
+const cors = require('cors');
+const express = require('express');
+const Menus = require('../database/Menus');
 const numCPUs = require('os').cpus().length;
+const path = require('path');
+const redis = require('redis');
+const Restaurants = require('../database/Restaurants');
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
@@ -32,7 +32,7 @@ if (cluster.isMaster) {
   app.use(cors());
 
   app.get('/:id', (req, res) => {
-    res.sendFile(path.join(__dirname, '/../kelp-service/public/index.html'));
+    res.sendFile(path.join(__dirname, '/../public/index.html'));
   });
 
   app.get('/api/details/:id', (req, res) => {

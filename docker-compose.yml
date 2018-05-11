@@ -1,11 +1,14 @@
 version: "3"
 services:
   database:
-    image: mongo:3.6.4
+    image: mongo
+  cache:
+    image: redis
 
   welp:
     build: ./
     depends_on:
       - 'database'
+      - 'cache'
     ports: 
       - '3002:3002'

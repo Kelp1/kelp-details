@@ -34,10 +34,9 @@ class App extends React.Component {
       .catch((error) => {
         Raven.captureException(error);
       });
-      // axios.get(`http://${AWS_PUBLIC_IP}/api/menu/${this.state.restaurantId}`)
-      axios.get(`http://localhost:3002/api/menu/${this.state.restaurantId}`)
+    // axios.get(`http://${AWS_PUBLIC_IP}/api/menu/${this.state.restaurantId}`)
+    axios.get(`http://localhost:3002/api/menu/${this.state.restaurantId}`)
       .then((response) => {
-        console.log(response.data);
         this.setState({ restaurantMenu: response.data });
       })
       .catch((error) => {
